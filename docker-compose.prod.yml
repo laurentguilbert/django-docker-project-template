@@ -1,0 +1,32 @@
+web:
+  restart: always
+  volumes:
+    - /web
+  links:
+    - memcached
+    - postgres
+  expose:
+    - "8000"
+  environment:
+    - DJANGO_SETTINGS_MODULE=project.settings.production
+  command: ./bin/uwsgi --ini=./parts/uwsgi/uwsgi.ini
+
+nginx:
+  restart: always
+  build: ./nginx/
+  ports:
+    - "80"
+  volumes_from:
+    - web
+
+postgres:
+  restart: always
+  image: postgres
+  volumes_from:
+    - data
+
+data:
+  image: postgres
+  command: /bin/true
+  volumes:
+    - /var/lib/postgresql/data

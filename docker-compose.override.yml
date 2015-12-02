@@ -1,0 +1,8 @@
+web:
+  ports:
+    - "8000:8000"
+  volumes:
+    - ./web/project:/web/project/
+  environment:
+    - DJANGO_SETTINGS_MODULE=project.settings.local
+  command: ./bin/project runserver 0.0.0.0:8000

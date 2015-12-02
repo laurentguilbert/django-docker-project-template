@@ -1,0 +1,12 @@
+.installed.cfg
+*.pyc
+*~
+bin/
+develop-eggs/
+eggs/
+logs/
+node_modules/
+parts/
+assets/
+media/
+db.sqlite3

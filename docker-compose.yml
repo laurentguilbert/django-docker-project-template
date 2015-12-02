@@ -1,0 +1,8 @@
+web:
+  build: ./web/
+  dns: 8.8.8.8
+  links:
+    - memcached
+
+memcached:
+  image: memcached
