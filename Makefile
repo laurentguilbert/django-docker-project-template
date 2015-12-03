@@ -7,7 +7,7 @@ deploy: backup
 	@echo "$(COLOR)* Updating code.$(NO_COLOR)"
 	@git pull
 	@echo "$(COLOR)* Re-creating containers.$(NO_COLOR)"
-	@docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --force-recreate
+	@docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --force-recreate web nginx
 
 backup:
 	@echo "$(COLOR)* Backing up database.$(NO_COLOR)"

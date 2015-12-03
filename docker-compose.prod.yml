@@ -9,6 +9,8 @@ web:
     - "8000"
   environment:
     - DJANGO_SETTINGS_MODULE=project.settings.production
+  volumes_from:
+    - media
   command: ./bin/uwsgi --ini=./parts/uwsgi/uwsgi.ini
 
 nginx:
@@ -30,3 +32,9 @@ data:
   command: /bin/true
   volumes:
     - /var/lib/postgresql/data
+
+media:
+  image: web
+  command: /bin/true
+  volumes:
+    - /web/project/media
